@@ -10,3 +10,5 @@ DLL injection in order to migrate a dll into a process all from memory.
 
 ## Notes
 To see how I developed this tool and further information on it see my blog [post](https://x64sec.sh/custom-dll-injection-with-cobalt-strike/)
+
+![Cobalt Strike BOF Executing](cobalt-strike-mandll.png "Cobalt Strike mandll")
